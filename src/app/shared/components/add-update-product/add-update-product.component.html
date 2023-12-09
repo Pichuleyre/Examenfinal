@@ -1,0 +1,77 @@
+<app-header [isModal]="true" title="Crea tu viaje"></app-header>
+<ion-content>
+    <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
+
+        <ion-avatar *ngIf="form.value.image">
+          <img [src]="form.value.image" />
+        </ion-avatar>
+
+        <ion-icon class="image-icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
+
+        <br>
+
+        <ion-button (click)="takeImage()" size="small" shape="round" class="primary">
+          Muestra tu auto para que te reconoscan
+        </ion-button>
+
+        <app-custom-input 
+        autocomplete="inicio"
+        [control]="form.controls.inicio"
+        type="text"
+        label="Lugar de inicio"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.inicio.errors && form.controls.inicio.touched">
+          <div *ngIf="form.controls.inicio.errors?.['required']">Debe ingresar un punto de encuentro</div>
+          <div *ngIf="form.controls.inicio.errors?.['minLenght']">El punto de inicio debe tener al menos 4 caracteres</div>
+        </div>
+
+        <app-custom-input 
+        autocomplete="destino"
+        [control]="form.controls.final"
+        type="text"
+        label="Destino"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.final.errors && form.controls.final.touched">
+          <div *ngIf="form.controls.final.errors?.['required']">Debe ingresar un destino</div>
+          <div *ngIf="form.controls.final.errors?.['minLenght']">El destino debe tener al menos 4 caracteres</div>
+        </div>
+
+        <app-custom-input
+        [control]="form.controls.pasajero"
+        type="number"
+        label="Numero de pasajeros"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.pasajero.errors && form.controls.pasajero.touched">
+          <div *ngIf="form.controls.pasajero.errors?.['required']">Debe ingresar un numero de pasajeros</div>
+          <div *ngIf="form.controls.pasajero.errors?.['minLenght']">El N° de pasajeros debe ser mayor a 0</div>
+        </div>
+
+        <app-custom-input 
+        [control]="form.controls.price"
+        type="number"
+        label="Precio"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
+          <div *ngIf="form.controls.price.errors?.['required']">Debe ingresar un precio</div>
+          <div *ngIf="form.controls.price.errors?.['minLenght']">El Precio minimo debe ser 0</div>
+        </div>
+
+        <app-custom-input 
+        [control]="form.controls.time"
+        type="time"
+        label="Hora de salida"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.time.errors && form.controls.time.touched">
+          <div *ngIf="form.controls.time.errors?.['required']">Debe ingresar un Horario</div>
+        </div>
+
+        <ion-button expand="block" mode="ios" class="primary" type="submit" [disabled]="form.invalid">
+          Agregar Viaje
+        </ion-button>
+      </form>
+</ion-content>

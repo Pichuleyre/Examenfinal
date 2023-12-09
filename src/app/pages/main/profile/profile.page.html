@@ -1,0 +1,24 @@
+<app-header title="Perfil"></app-header>
+
+
+<ion-content [fullscreen]="true" style="padding-left: 10px; padding-right: 10px;">
+  <ion-card color="light">
+  <ion-text class="principal" color="" >
+    <br>
+    <h1>Bienvenido {{user().name}}</h1>
+  </ion-text>
+    
+  <ion-text class="principal" color="">
+    <h4><strong> Tu correo:  </strong>{{user().email}} <ion-icon name="mail-outline"></ion-icon></h4>
+  </ion-text>
+
+  <ion-text class="principal" color="">
+    <h4>Recuerda que esta aplicación está desarrollada para mejorar la vida de las personas,  asi que siempre ten en cuenta estos consejos: <br /><br /><strong>Si manejas cobra lo justo. <br />Si eres pasajera/o no pidas rebajas.</strong>
+    </h4>
+  </ion-text>
+  <ion-text class="principal" color="primary" style="text-align: center;">
+    <img src="assets/img/feliz.png" alt="" width="25%" class="img-logo">
+
+  </ion-text>
+</ion-card>
+</ion-content>
